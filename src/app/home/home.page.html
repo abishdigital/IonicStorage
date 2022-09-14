@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ionic Offline or Native Storage Example
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <strong>String value:</strong>
+      </ion-col>
+      <ion-col>:
+        {{data.name}}<ion-icon name="trash" (click)="deleteKey('name')"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <strong>Integer value:</strong>
+      </ion-col>
+      <ion-col>:
+        {{data.phone}}<ion-icon name="trash" (click)="deleteKey('phone')"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-item-divider></ion-item-divider>
+    <ion-row>
+      <ion-col>
+        <strong>All Stored Keys:</strong>
+      </ion-col>
+      <ion-col>
+        {{ getStoredKeys }}
+      </ion-col>
+    </ion-row>
+    <ion-item-divider></ion-item-divider>
+    <ion-row>
+      <ion-col>
+        <strong>User JSON object:</strong>
+        <ion-icon name="trash" (click)="deleteKey('users')"></ion-icon>
+
+        <ion-card *ngFor="let user of data.users; let i = index">
+          <ion-card-header>
+            <ion-card-title>User {{i + 1}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Name</strong>: {{user.name}}</p>
+            <p><strong>Email</strong>: {{user.email}}</p>
+            <p><strong>Username</strong>: {{user.username}}</p>
+          </ion-card-content>
+        </ion-card>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
